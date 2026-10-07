@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Irregular Verbs Trainer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="app">
+
+    <!-- DECORATIVE SHAPES -->
+    <div class="shape shape-blue"></div>
+    <div class="shape shape-orange"></div>
+    <div class="shape shape-green"></div>
+
+
+    <!-- =====================================
+         START SCREEN
+    ====================================== -->
+
+    <section class="screen start-screen">
+
+        <div class="brand">
+            <span class="brand-mark"></span>
+            <span>СПЭНГЛИШ</span>
+        </div>
+
+
+        <div class="start-content">
+
+            <p class="eyebrow">
+                ENGLISH · VERB TRAINER
+            </p>
+
+
+            <h1>
+                IRREGULAR
+                <span>VERBS</span>
+            </h1>
+
+
+            <p class="subtitle">
+                Practice the forms.<br>
+                Find what needs work.
+            </p>
+
+
+            <div class="start-actions">
+
+                <button
+                    class="main-button"
+                    id="startButton"
+                >
+                    START PRACTICE
+                    <span>→</span>
+                </button>
+
+
+                <button
+                    class="teacher-button"
+                    id="teacherButton"
+                >
+                    TEACHER MODE
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-note">
+            <span>V1</span>
+            <span>V2</span>
+            <span>V3</span>
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         SETUP SCREEN
+    ====================================== -->
+
+    <section
+        class="screen setup-screen hidden"
+        id="setupScreen"
+    >
+
+        <div class="top-bar">
+
+            <div class="brand">
+                <span class="brand-mark"></span>
+                <span>СПЭНГЛИШ</span>
+            </div>
+
+
+            <button
+                class="back-button"
+                id="backToStart"
+            >
+                ← BACK
+            </button>
+
+        </div>
+
+
+        <div class="setup-content">
+
+
+            <!-- HEADER -->
+
+            <div class="setup-header">
+
+                <p class="eyebrow">
+                    BUILD YOUR SESSION
+                </p>
+
+                <h2>
+                    WHAT DO YOU<br>
+                    WANT TO <span>PRACTICE?</span>
+                </h2>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 STEP 01
+            ====================================== -->
+
+            <div class="setup-block">
+
+                <div class="step-number">
+                    01
+                </div>
+
+
+                <div class="step-content">
+
+                    <p class="step-label">
+                        CHOOSE YOUR VERBS
+                    </p>
+
+
+                    <div class="option-grid verbs-options">
+
+
+                        <!-- ALL VERBS -->
+
+                        <button
+                            class="option-card selected"
+                            data-set="all"
+                        >
+
+                            <span class="option-title">
+                                ALL VERBS
+                            </span>
+
+                            <span class="option-description">
+                                Practice from the full verb bank
+                            </span>
+
+                        </button>
+
+
+
+                        <!-- MY SET -->
+
+                        <button
+                            class="option-card"
+                            data-set="custom"
+                        >
+
+                            <span class="option-title">
+                                MY SET
+                            </span>
+
+                            <span class="option-description">
+                                Choose exactly what you need
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 CUSTOM VERB SET
+            ====================================== -->
+
+            <div
+                class="verb-picker hidden"
+                id="verbPicker"
+            >
+
+                <div class="verb-picker-top">
+
+                    <div>
+
+                        <p class="step-label">
+                            YOUR VERB SET
+                        </p>
+
+                        <p class="selected-counter">
+                            <strong id="selectedCount">0</strong>
+                            SELECTED
+                        </p>
+
+                    </div>
+
+
+                    <div class="picker-actions">
+
+                        <button id="selectAllButton">
+                            SELECT ALL
+                        </button>
+
+                        <button id="clearButton">
+                            CLEAR
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SEARCH -->
+
+                <div class="verb-search-wrap">
+
+                    <input
+                        type="text"
+                        id="verbSearch"
+                        class="verb-search"
+                        placeholder="Search verbs..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+
+                <!-- VERBS CREATED BY JS -->
+
+                <div
+                    class="verb-list"
+                    id="verbList"
+                >
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 STEP 02
+            ====================================== -->
+
+            <div class="setup-block">
+
+                <div class="step-number">
+                    02
+                </div>
+
+
+                <div class="step-content">
+
+                    <p class="step-label">
+                        CHOOSE THE MODE
+                    </p>
+
+
+                    <div class="option-grid mode-options">
+
+
+                        <!-- V2 -->
+
+                        <button
+                            class="mode-card selected"
+                            data-mode="v2"
+                        >
+                            <span>V1</span>
+                            <strong>→</strong>
+                            <span>V2</span>
+                        </button>
+
+
+
+                        <!-- V3 -->
+
+                        <button
+                            class="mode-card"
+                            data-mode="v3"
+                        >
+                            <span>V1</span>
+                            <strong>→</strong>
+                            <span>V3</span>
+                        </button>
+
+
+
+                        <!-- BOTH -->
+
+                        <button
+                            class="mode-card"
+                            data-mode="both"
+                        >
+                            <span>V1</span>
+                            <strong>→</strong>
+                            <span>V2 + V3</span>
+                        </button>
+
+
+
+                        <!-- MIXED -->
+
+                        <button
+                            class="mode-card"
+                            data-mode="mixed"
+                        >
+
+                            <span class="mixed-label">
+                                MIXED
+                            </span>
+
+                            <span class="mixed-small">
+                                random forms
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+<!-- =====================================
+     STEP 03 · SESSION SIZE
+====================================== -->
+
+<div class="setup-block" id="amountBlock">
+
+    <div class="step-number">
+        03
+    </div>
+
+    <div class="step-content">
+
+        <p class="step-label">
+            HOW MANY VERBS?
+        </p>
+
+        <div class="amount-options">
+
+            <button class="amount-card selected" data-amount="10">
+                10
+            </button>
+
+            <button class="amount-card" data-amount="20">
+                20
+            </button>
+
+            <button class="amount-card" data-amount="30">
+                30
+            </button>
+
+            <button class="amount-card" data-amount="40">
+                40
+            </button>
+
+            <button class="amount-card" data-amount="50">
+                50
+            </button>
+
+            <button class="amount-card" data-amount="all">
+                ALL
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+            <!-- =====================================
+                 SETUP FOOTER
+            ====================================== -->
+
+            <div class="setup-footer">
+
+
+                <div class="session-summary">
+
+                    <span>
+                        YOUR SESSION
+                    </span>
+
+                    <strong id="sessionSummary">
+                        ALL VERBS · V1 → V2
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="continue-button"
+                    id="continueButton"
+                >
+                    CONTINUE
+                    <span>→</span>
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         TRAINING SCREEN
+    ====================================== -->
+
+    <section
+        class="screen training-screen hidden"
+        id="trainingScreen"
+    >
+
+
+        <!-- TOP -->
+
+        <div class="training-top">
+
+            <div class="brand">
+                <span class="brand-mark"></span>
+                <span>СПЭНГЛИШ</span>
+            </div>
+
+
+            <button
+                class="back-button"
+                id="exitTraining"
+            >
+                ← EXIT
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================================
+             PROGRESS
+        ====================================== -->
+
+        <div class="training-progress">
+
+            <div class="progress-info">
+
+                <span id="trainingModeLabel">
+                    IRREGULAR VERBS · V1 → V2
+                </span>
+
+                <span id="questionCounter">
+                    01 / 10
+                </span>
+
+            </div>
+
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================
+             QUESTION
+        ====================================== -->
+
+        <div class="training-content">
+
+
+            <p
+                class="question-label"
+                id="questionLabel"
+            >
+                GIVE THE PAST SIMPLE FORM
+            </p>
+
+
+
+            <h2
+                class="verb-question"
+                id="verbQuestion"
+            >
+                GO
+            </h2>
+
+
+
+            <!-- JS CREATES INPUTS HERE -->
+
+            <div
+                class="answer-area"
+                id="answerArea"
+            >
+            </div>
+
+
+
+            <!-- =====================================
+                 FEEDBACK
+            ====================================== -->
+
+            <div
+                class="feedback hidden"
+                id="feedback"
+            >
+
+                <span
+                    class="feedback-mark"
+                    id="feedbackMark"
+                >
+                    ✓
+                </span>
+
+
+                <div>
+
+                    <strong id="feedbackTitle">
+                        NICE.
+                    </strong>
+
+                    <p id="feedbackText">
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CHECK / NEXT -->
+
+            <button
+                class="check-button"
+                id="checkButton"
+            >
+                CHECK
+                <span>→</span>
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             TRAINING FOOTER
+        ====================================== -->
+
+        <div class="training-footer">
+
+            <span>V1</span>
+            <span>V2</span>
+            <span>V3</span>
+
+        </div>
+
+
+    </section>
+
+    <!-- =====================================
+     RESULTS SCREEN
+====================================== -->
+
+<section
+    class="screen results-screen hidden"
+    id="resultsScreen"
+>
+
+    <div class="results-top">
+
+        <div class="brand">
+            <span class="brand-mark"></span>
+            <span>СПЭНГЛИШ</span>
+        </div>
+
+        <span class="results-top-label">
+            SESSION COMPLETE
+        </span>
+
+    </div>
+
+
+    <div class="results-content">
+
+
+        <p class="eyebrow">
+            YOUR RESULT
+        </p>
+
+
+        <div class="results-heading">
+
+            <h2 id="resultsTitle">
+                PERFECT.
+            </h2>
+
+            <div class="results-score">
+                <strong id="resultsScore">
+                    100%
+                </strong>
+
+                <span id="resultsFraction">
+                    4 / 4 CORRECT
+                </span>
+            </div>
+
+        </div>
+
+
+        <!-- PERFECT STATE -->
+
+        <div
+            class="perfect-result"
+            id="perfectResult"
+        >
+
+            <div class="perfect-mark">
+                ✓
+            </div>
+
+            <div>
+                <strong>
+                    NO MISTAKES THIS TIME.
+                </strong>
+
+                <p>
+                    Every answer in this session was correct.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- MISTAKES STATE -->
+
+        <div
+            class="mistakes-result hidden"
+            id="mistakesResult"
+        >
+
+            <div class="mistakes-header">
+
+                <span>
+                    NEEDS WORK
+                </span>
+
+                <strong id="mistakesCount">
+                    2 VERBS
+                </strong>
+
+            </div>
+
+
+            <div
+                class="mistakes-list"
+                id="mistakesList"
+            >
+                <!-- JS -->
+            </div>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div id="studentSaveStatus" class="teacher-notice hidden" role="status"></div>
+<div class="results-actions">
+
+            <button
+                class="retry-button hidden"
+                id="retryMistakesButton"
+            >
+                RETRY MISTAKES
+                <span>↻</span>
+            </button>
+
+
+            <button
+                class="new-session-button"
+                id="newSessionButton"
+            >
+                NEW SESSION
+                <span>→</span>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="results-footer">
+
+        <span id="resultMode">
+            V1 → V2
+        </span>
+
+        <span>
+            IRREGULAR VERBS
+        </span>
+
+    </div>
+
+</section>
+
+<section class="screen assignment-screen hidden" id="assignmentReadyScreen">
+ <div class="teacher-setup-top"><div class="brand">СПЭНГЛИШ</div><button class="back-button" id="createAnother">NEW ASSIGNMENT</button></div>
+ <div class="assignment-content"><p class="eyebrow">TEACHER MODE</p><h2>ASSIGNMENT READY.</h2><p id="assignmentDescription"></p>
+ <label for="studentLink">STUDENT LINK</label><input class="teacher-input" id="studentLink" readonly><button class="teacher-continue-button" id="copyStudentLink">COPY STUDENT LINK</button>
+ <label for="teacherLink">YOUR RESULTS LINK</label><input class="teacher-input" id="teacherLink" readonly><p class="teacher-hint">Keep this link private. Save it to view your students' results from any device.</p>
+ <div class="assignment-actions"><button class="secondary-action" id="copyTeacherLink">COPY RESULTS LINK</button><button class="secondary-action" id="openTeacherResults">VIEW RESULTS</button></div>
+ </div>
+</section>
+<section class="screen assignment-screen hidden" id="studentScreen"><div class="assignment-content"><p class="eyebrow">YOUR ASSIGNMENT</p><h2>LET’S PRACTICE.</h2><p id="studentDescription">Loading assignment…</p><label for="studentName">YOUR NAME</label><input class="teacher-input" id="studentName" maxlength="80" autocomplete="name" placeholder="Your name"><p class="teacher-hint">Your name, answers and score will be shared with your teacher.</p><button class="teacher-continue-button" id="startAssignment" disabled>START ASSIGNMENT</button><p id="studentError" role="alert"></p></div></section>
+<section class="screen assignment-screen hidden" id="teacherResultsScreen"><div class="assignment-content"><p class="eyebrow">TEACHER MODE</p><h2>STUDENT RESULTS.</h2><p id="teacherResultsDescription"></p><div class="assignment-actions"><button class="secondary-action" id="refreshTeacherResults">REFRESH</button><button class="secondary-action" id="downloadTeacherResults">DOWNLOAD CSV</button><button class="secondary-action" id="teacherHome">NEW ASSIGNMENT</button></div><p id="teacherResultsStatus" role="status"></p><div id="teacherResultsList"></div></div></section>
+<p class="teacher-notice hidden" id="setupError" role="alert"></p>
+</main>
+
+
+<script src="script.js"></script>
+<script src="config.js"></script>
+<script src="teacher.js"></script>
+
+</body>
+
+</html>
