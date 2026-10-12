@@ -6,7 +6,6 @@ const startScreen = document.querySelector(".start-screen");
 const setupScreen = document.getElementById("setupScreen");
 
 const startButton = document.getElementById("startButton");
-const teacherButton = document.getElementById("teacherButton");
 const backToStart = document.getElementById("backToStart");
 
 const setButtons = document.querySelectorAll("[data-set]");
@@ -295,7 +294,6 @@ let sessionResults = [];
 // ==============================
 
 continueButton.addEventListener("click", async () => {
-    if (appMode === "teacher") { await createTeacherAssignment(); return; }
 
     if (
         selectedSet === "custom" &&
@@ -361,9 +359,7 @@ function showQuestion() {
 
 
     // Decide task
-    if (appMode === "student") {
-        currentTask = activeAssignment.tasks[currentQuestion].mode;
-    } else if (selectedMode === "mixed") {
+    if (selectedMode === "mixed") {
 
         const mixedModes = ["v2", "v3", "both"];
 
@@ -653,6 +649,10 @@ function nextQuestion() {
 // RESULTS
 // ==============================
 
+function showResults() {
+    renderResults();
+}
+
 function renderResults() {
 
     trainingScreen.classList.add("hidden");
@@ -817,7 +817,6 @@ retryMistakesButton.addEventListener("click", () => {
 // ==============================
 
 exitTraining.addEventListener("click", () => {
-    if (appMode === "student") { showOnly(document.getElementById("studentScreen")); return; }
 
     trainingScreen.classList.add("hidden");
     setupScreen.classList.remove("hidden");
@@ -861,35 +860,6 @@ backToStart.addEventListener("click", () => {
     setupScreen.classList.add("hidden");
     startScreen.classList.remove("hidden");
 });
-teacherButton.addEventListener("click", () => {
-    appMode = "teacher";
-    startScreen.classList.add("hidden");
-    setupScreen.classList.remove("hidden");
-    updateSetupForMode();
-});
-
-function updateSetupForMode() {
-
-    if (appMode === "teacher") {
-
-        continueButton.innerHTML =
-            `CREATE ASSIGNMENT <span>→</span>`;
-
-        sessionSummary.textContent =
-            "TEACHER ASSIGNMENT";
-
-    } else {
-
-        continueButton.innerHTML =
-            `CONTINUE <span>→</span>`;
-
-        updateSummary();
-
-    }
-
-}
-
-
 // ==============================
 // SET SELECTION
 // ==============================
@@ -1097,4 +1067,9 @@ function updateSummary() {
     sessionSummary.textContent =
         `${setNames[selectedSet]} · ${modeNames[selectedMode]}`;
 
+}
+// Teacher Mode is disabled. Old assignment links open ordinary practice.
+if (new URLSearchParams(location.search).has("assignment") ||
+    new URLSearchParams(location.hash.slice(1)).has("results")) {
+    history.replaceState(null, "", location.pathname);
 }

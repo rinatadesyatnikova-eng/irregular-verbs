@@ -61,14 +61,6 @@
                     <span>→</span>
                 </button>
 
-
-                <button
-                    class="teacher-button"
-                    id="teacherButton"
-                >
-                    TEACHER MODE
-                </button>
-
             </div>
 
         </div>
@@ -699,8 +691,6 @@
 
 
         <!-- ACTIONS -->
-
-        <div id="studentSaveStatus" class="teacher-notice hidden" role="status"></div>
 <div class="results-actions">
 
             <button
@@ -739,23 +729,7 @@
 
 </section>
 
-<section class="screen assignment-screen hidden" id="assignmentReadyScreen">
- <div class="teacher-setup-top"><div class="brand">СПЭНГЛИШ</div><button class="back-button" id="createAnother">NEW ASSIGNMENT</button></div>
- <div class="assignment-content"><p class="eyebrow">TEACHER MODE</p><h2>ASSIGNMENT READY.</h2><p id="assignmentDescription"></p>
- <label for="studentLink">STUDENT LINK</label><input class="teacher-input" id="studentLink" readonly><button class="teacher-continue-button" id="copyStudentLink">COPY STUDENT LINK</button>
- <label for="teacherLink">YOUR RESULTS LINK</label><input class="teacher-input" id="teacherLink" readonly><p class="teacher-hint">Keep this link private. Save it to view your students' results from any device.</p>
- <div class="assignment-actions"><button class="secondary-action" id="copyTeacherLink">COPY RESULTS LINK</button><button class="secondary-action" id="openTeacherResults">VIEW RESULTS</button></div>
- </div>
-</section>
-<section class="screen assignment-screen hidden" id="studentScreen"><div class="assignment-content"><p class="eyebrow">YOUR ASSIGNMENT</p><h2>LET’S PRACTICE.</h2><p id="studentDescription">Loading assignment…</p><label for="studentName">YOUR NAME</label><input class="teacher-input" id="studentName" maxlength="80" autocomplete="name" placeholder="Your name"><p class="teacher-hint">Your name, answers and score will be shared with your teacher.</p><button class="teacher-continue-button" id="startAssignment" disabled>START ASSIGNMENT</button><p id="studentError" role="alert"></p></div></section>
-<section class="screen assignment-screen hidden" id="teacherResultsScreen"><div class="assignment-content"><p class="eyebrow">TEACHER MODE</p><h2>STUDENT RESULTS.</h2><p id="teacherResultsDescription"></p><div class="assignment-actions"><button class="secondary-action" id="refreshTeacherResults">REFRESH</button><button class="secondary-action" id="downloadTeacherResults">DOWNLOAD CSV</button><button class="secondary-action" id="teacherHome">NEW ASSIGNMENT</button></div><p id="teacherResultsStatus" role="status"></p><div id="teacherResultsList"></div></div></section>
-<p class="teacher-notice hidden" id="setupError" role="alert"></p>
-</main>
-
-
 <script src="script.js"></script>
-<script src="config.js"></script>
-<script src="teacher.js"></script>
 
 </body>
 
